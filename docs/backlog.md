@@ -26,7 +26,7 @@
     - [ ] PR templates
     - [ ] Issue templates
     - [ ] Contributing guide
-    - [ ] License etc.
+    - [x] License
 
 ## UI framework
 - [ ] i18n / l10n strategy in place (i18next?)
