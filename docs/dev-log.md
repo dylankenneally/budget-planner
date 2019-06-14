@@ -1,0 +1,8 @@
+# Development log for the Budget Planner app
+
+What was done, and when
+
+## 15/06/19 - fundamental
+- Created basic notes, road map, dev plan, backlog etc.
+  - [`/docs/`](./README.md)
+- Template React JS app created using [create-react-app](https://github.com/facebook/create-react-app)
