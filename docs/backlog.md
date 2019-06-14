@@ -19,7 +19,7 @@
 - [ ] Docker, maybe
 
 ## Build infrastructure
-- [ ] Automated builds on Travis CI/CD
+- [x] Automated builds on Travis CI/CD
 - [ ] Eslint checking, failing builds as appropriate
 - [ ] PR's using eslint, `prebuild` step, on CI/CD before allowing pulling
 - [ ] GitHub infrastructure
@@ -27,6 +27,7 @@
     - [ ] Issue templates
     - [ ] Contributing guide
     - [x] License
+    - [ ] Explore GitHub projects, replace this backlog? Epics? User stories?
 
 ## UI framework
 - [ ] i18n / l10n strategy in place (i18next?)
