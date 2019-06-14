@@ -6,3 +6,4 @@ What was done, and when
 - Created basic notes, road map, dev plan, backlog etc.
   - [`/docs/`](./README.md)
 - Template React JS app created using [create-react-app](https://github.com/facebook/create-react-app)
+- Automated builds with [Travis CI/CD](https://travis-ci.org/dylankenneally/budget-planner)
