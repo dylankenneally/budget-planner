@@ -5,7 +5,7 @@
 - The motivation for this project is to further explore a variety of different web technologies and how to piece them together, to help me learn new tech as well as deepen my knowledge of tech that I'm already using
 - More information
   - [Projects/sprints](https://github.com/dylankenneally/budget-planner/projects)
-  - [./docs/backlog.md](Backlog/dump of what needs doing)
+  - [Backlog/dump of what needs doing](./docs/backlog.md)
 
 ## Prerequisites
 - [Node.js](https://nodejs.org/en/), version 10 or above is required.
