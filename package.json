@@ -12,8 +12,6 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.0.0-rc.0",
-    "install": "^0.12.2",
-    "npm": "^6.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
