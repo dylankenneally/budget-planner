@@ -1,7 +1,12 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const app = () => {
-  return <h1>Stub</h1>;
+	return (
+		<Typography variant="h5" gutterBottom>
+			Stub
+		</Typography>
+	);
 };
 
 export default app;

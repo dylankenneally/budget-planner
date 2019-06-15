@@ -11,7 +11,7 @@
 ## Tech stack to work with
 - [ ] Node JS
 - [ ] React JS, inc. hooks
-- [ ] Material UI
+- [x] Material UI
 - [x] Travis CI/CD
 - [ ] i18next
 - [ ] eslint
