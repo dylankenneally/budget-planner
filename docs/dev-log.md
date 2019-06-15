@@ -9,3 +9,5 @@ What was done, and when
 - Automated builds with [Travis CI/CD](https://travis-ci.org/dylankenneally/budget-planner)
 - GitHub set up
   - PR template
+  - Protected master branch, code review & CI/CD build needed
+

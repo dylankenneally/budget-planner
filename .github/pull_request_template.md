@@ -2,6 +2,7 @@
 - [ ] update the description field above with a brief description
 - [ ] describe what is included in this PR
 - [ ] @mention people that should be aware of this change
+- @dylankenneally
 - [ ] remove the below line re. deleting the branch if you want to keep it (i.e. you're still working on it)
 - [ ] indicate if _squash merge_ should not be used (it is by default)
 
