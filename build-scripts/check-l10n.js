@@ -1,5 +1,8 @@
 // Checks that the localisation (l10n) files do not contain untranslated strings, to be used after `npm run i18n:generate` which generates the strings
 
+// This is a command line script - we want console output
+/* eslint-disable no-console */
+
 const fs = require('fs');
 const path = require('path');
 const config = require('./i18next-scanner.config');
