@@ -11,8 +11,8 @@
 ## Tech stack to work with
 - [ ] Node JS
 - [ ] React JS, inc. hooks
-- [ ] Material UI
-- [ ] Travis CI/CD
+- [x] Material UI
+- [x] Travis CI/CD
 - [ ] i18next
 - [ ] eslint
 - [ ] Redux, maybe
@@ -56,3 +56,6 @@
 - [ ] GitHub Pages
 - [ ] Digital Ocean
 - [ ] AWS
+
+### Snag list, low priority items to do
+- favicon
