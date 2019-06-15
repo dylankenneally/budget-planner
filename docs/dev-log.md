@@ -10,4 +10,6 @@ What was done, and when
 - GitHub set up
   - PR template
   - Protected master branch, code review & CI/CD build needed
+- Material UI brought in, not themed
+- i18next brought in, on en-US for translation
 

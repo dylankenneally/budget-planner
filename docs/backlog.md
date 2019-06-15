@@ -10,10 +10,10 @@
 
 ## Tech stack to work with
 - [ ] Node JS
-- [ ] React JS, inc. hooks
+- [x] React JS, inc. hooks
 - [x] Material UI
 - [x] Travis CI/CD
-- [ ] i18next
+- [x] i18next
 - [ ] eslint
 - [ ] Redux, maybe
 - [ ] Docker, maybe
@@ -59,3 +59,5 @@
 
 ### Snag list, low priority items to do
 - favicon
+- material UI theme
+- additional l10n support, only en-US at the mo

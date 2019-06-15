@@ -1,12 +1,14 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'react-i18next';
 
-const app = () => {
+const App = () => {
+	const { t } = useTranslation();
 	return (
 		<Typography variant="h5" gutterBottom>
-			Stub
+		{t('dev.todo')}
 		</Typography>
 	);
 };
 
-export default app;
+export default App;
