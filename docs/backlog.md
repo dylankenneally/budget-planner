@@ -23,7 +23,7 @@
 - [ ] Eslint checking, failing builds as appropriate
 - [ ] PR's using eslint, `prebuild` step, on CI/CD before allowing pulling
 - [ ] GitHub infrastructure
-    - [ ] PR templates
+    - [x] PR templates
     - [ ] Issue templates
     - [ ] Contributing guide
     - [x] License

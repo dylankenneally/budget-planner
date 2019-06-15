@@ -7,3 +7,5 @@ What was done, and when
   - [`/docs/`](./README.md)
 - Template React JS app created using [create-react-app](https://github.com/facebook/create-react-app)
 - Automated builds with [Travis CI/CD](https://travis-ci.org/dylankenneally/budget-planner)
+- GitHub set up
+  - PR template
