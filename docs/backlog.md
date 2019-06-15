@@ -9,7 +9,7 @@
 - Must be **responsive**, mobile ready
 
 ## Tech stack to work with
-- [ ] Node JS
+- [x] Node JS
 - [x] React JS, inc. hooks
 - [x] Material UI
 - [x] Travis CI/CD
@@ -30,8 +30,10 @@
     - [ ] Explore GitHub projects, replace this backlog? Epics? User stories?
 
 ## UI framework
-- [ ] i18n / l10n strategy in place (i18next?)
-- [ ] Material UI
+- [x] i18n / l10n strategy in place (i18next?)
+- [x] Material UI
+- [ ] Custom Material UI theme?
+- [ ] Additional l10n translations, only en-US at the moment
 
 ## Primary features
 - [ ] Budget entry (single)
@@ -59,5 +61,3 @@
 
 ### Snag list, low priority items to do
 - favicon
-- material UI theme
-- additional l10n support, only en-US at the mo

@@ -12,4 +12,6 @@ What was done, and when
   - Protected master branch, code review & CI/CD build needed
 - Material UI brought in, not themed
 - i18next brought in, on en-US for translation
+  - generation of translation files done in pre-build
+  - check translation files don't have untranslated strings in pre-build, fails build if the do
 

@@ -22,11 +22,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "npm run i18n",
+    "prebuild": "npm run i18n:generate && npm run l10n:validate",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "i18n": "npx i18next-scanner --config build-scripts/i18next-scanner.config.js"
+    "i18n:generate": "npx i18next-scanner --config build-scripts/i18next-scanner.config.js",
+    "l10n:validate": "node build-scripts/check-l10n.js"
   },
   "eslintConfig": {
     "extends": "react-app"
