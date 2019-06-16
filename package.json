@@ -22,15 +22,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "npm run i18n:generate && npm run l10n:validate",
+    "prebuild": "npm run lint && npm run i18n:generate && npm run l10n:validate",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "npx eslint --ext .jsx,.js .",
     "i18n:generate": "npx i18next-scanner --config build-scripts/i18next-scanner.config.js",
     "l10n:validate": "node build-scripts/check-l10n.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -45,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
     "i18next-scanner": "^2.10.2"
   }
 }

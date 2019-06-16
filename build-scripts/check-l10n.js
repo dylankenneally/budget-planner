@@ -1,5 +1,8 @@
 // Checks that the localisation (l10n) files do not contain untranslated strings, to be used after `npm run i18n:generate` which generates the strings
 
+// This is a command line script - we want console output
+/* eslint-disable no-console */
+
 const fs = require('fs');
 const path = require('path');
 const config = require('./i18next-scanner.config');
@@ -25,8 +28,7 @@ function objectContains(obj, str) {
 
 		if (typeof obj[property] === 'object') {
 			return objectContains(obj[property], str);
-		}
-		else if (typeof obj[property] !== 'string') {
+		} else if (typeof obj[property] !== 'string') {
 			continue;
 		}
 
@@ -54,5 +56,5 @@ for (let file of resourceFiles) {
 	}
 }
 
-console.log(`l10n check: ${resourceFiles.length} translation file(s) scanned`)
+console.log(`l10n check: ${resourceFiles.length} translation file(s) scanned`);
 process.exit(0);
