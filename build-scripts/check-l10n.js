@@ -28,8 +28,7 @@ function objectContains(obj, str) {
 
 		if (typeof obj[property] === 'object') {
 			return objectContains(obj[property], str);
-		}
-		else if (typeof obj[property] !== 'string') {
+		} else if (typeof obj[property] !== 'string') {
 			continue;
 		}
 
@@ -57,5 +56,5 @@ for (let file of resourceFiles) {
 	}
 }
 
-console.log(`l10n check: ${resourceFiles.length} translation file(s) scanned`)
+console.log(`l10n check: ${resourceFiles.length} translation file(s) scanned`);
 process.exit(0);

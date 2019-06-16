@@ -8,7 +8,7 @@ import App from './components/App';
 
 // import muiTheme from './framework/muiTheme';
 
-const appWrapper = 
+const appWrapper =
 	<>
 	{/* <ThemeProvider theme={createMuiTheme(muiTheme)}> */}
 		<CssBaseline />
