@@ -11,7 +11,7 @@ const App = () => {
 			{t('dev.todo')}
 			</Typography>
 
-			<BudgetEntry title="item title"/>
+			<BudgetEntry title="Example entry"/>
 		</>
 	);
 };
