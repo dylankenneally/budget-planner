@@ -4,17 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { TextField } from '@material-ui/core';
 import PeriodSelector, { Periods } from './PeriodSelector';
 
-const BudgetEntry = ({ title }) => {
+const BudgetEntry = ({ title, summaryPeriod }) => {
 	const [amount, setAmount] = React.useState(1);
 	const [period, setPeriod] = React.useState(Periods.monthly);
-	const [mainPeriod, setMainPeriod] = React.useState(Periods.annually); // todo: temp only
 	const { t } = useTranslation();
 
 	return (
 		<>
-			{/* todo: temp only, should be at the top of all inputs */}
-			<PeriodSelector period={mainPeriod} onChange={newPeriod => setMainPeriod(newPeriod)} />
-
 			<p>{title}</p>
 			{/* todo: interger only, no -ve, etc, uncontrolled (click up when empty to see error) */}
 			{/* Only allows positive integers */}
@@ -30,13 +26,14 @@ const BudgetEntry = ({ title }) => {
 			/>
 
 			<PeriodSelector period={period} onChange={newPeriod => setPeriod(newPeriod)} />
-			{t('currencySymbol')}{Math.round((amount * period) / mainPeriod)}
+			{t('currencySymbol')}{Math.round((amount * period) / summaryPeriod)}
 		</>
 	);
 };
 
 BudgetEntry.propTypes = {
 	title: PropTypes.string.isRequired,
+	summaryPeriod: PropTypes.oneOf(Object.values(Periods)).isRequired,
 };
 
 export default BudgetEntry;
