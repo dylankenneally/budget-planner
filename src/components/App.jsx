@@ -6,7 +6,7 @@ import PeriodSelector, { Periods } from './PeriodSelector';
 
 const App = () => {
 	const { t } = useTranslation();
-	const [mainPeriod, setMainPeriod] = React.useState(Periods.annually); // todo: temp only
+	const [mainPeriod, setMainPeriod] = React.useState(Periods.annually);
 
 	return (
 		<>

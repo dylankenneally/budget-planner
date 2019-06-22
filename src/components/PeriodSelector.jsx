@@ -15,11 +15,11 @@ const Periods = Object.freeze({
 	annually: 1,
 });
 
-const PeriodSelector = ({ period, onChange }) => {
+const PeriodSelector = ({ period, onChange, className }) => {
 	const { t } = useTranslation();
 
 	return (
-		<Select value={period} onChange={event => onChange(event.target.value)}>
+		<Select className={className} value={period} onChange={event => onChange(event.target.value)}>
 			<MenuItem value={Periods.daily}>{t('period.daily')}</MenuItem>
 			<MenuItem value={Periods.weekly}>{t('period.weekly')}</MenuItem>
 			<MenuItem value={Periods.fortnightly}>{t('period.fortnightly')}</MenuItem>
@@ -33,6 +33,7 @@ const PeriodSelector = ({ period, onChange }) => {
 PeriodSelector.propTypes = {
 	period: PropTypes.oneOf(Object.values(Periods)).isRequired,
 	onChange: PropTypes.func,
+	className: PropTypes.string,
 };
 
 PeriodSelector.defaultProps = {
