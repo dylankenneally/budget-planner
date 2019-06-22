@@ -1,5 +1,14 @@
 {
   "dev": {
     "todo": "Under development"
-  }
+  },
+  "period": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "fortnightly": "Fortnightly",
+    "monthly": "Monthly",
+    "quarterly": "Quarterly",
+    "annually": "Annually"
+  },
+  "currencySymbol": "$"
 }

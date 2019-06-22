@@ -1,0 +1,21 @@
+.budget-entry-container {
+	border-bottom: 1px grey solid;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding-bottom: 4px;
+}
+
+.budget-entry-input {
+	border: grey solid 1px;
+	border-radius: 5px;
+	padding: 6px;
+}
+
+.budget-entry-accumulated {
+	text-align: right;
+}
+
+.budget-entry-entry,	
+.budget-entry-period {
+	width: 100%;
+}

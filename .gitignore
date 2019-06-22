@@ -10,3 +10,6 @@ yarn.lock
 
 # misc
 .DS_Store
+
+# editor files
+.vscode/
