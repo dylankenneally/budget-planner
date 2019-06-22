@@ -11,9 +11,9 @@ const App = () => {
 
 	// will be moved, in development...
 	const homeGroups = [
-		'Mortgage & rent',
-		'Body corporate fees',
-		'Council rates',
+		{ title: 'Mortgage & rent', amount: 2500 },
+		{ title: 'Body corporate fees', amount: Math.round((1125*2)/12) },
+		{ title: 'Council rates', amount: Math.round(2500/12) },
 	];
 
 	return (
