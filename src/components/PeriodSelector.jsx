@@ -1,19 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import {
-	MenuItem,
-	Select,
-} from '@material-ui/core';
-
-const Periods = Object.freeze({
-	daily: 365,
-	weekly: 52,
-	fortnightly: 26,
-	monthly: 12,
-	quarterly: 4,
-	annually: 1,
-});
+import { MenuItem, Select } from '@material-ui/core';
+import Periods from '../dataModel/periods';
 
 const PeriodSelector = ({ period, onChange, className }) => {
 	const { t } = useTranslation();
@@ -41,4 +30,3 @@ PeriodSelector.defaultProps = {
 };
 
 export default PeriodSelector;
-export { Periods };
