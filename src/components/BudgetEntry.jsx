@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Container, Grid, TextField } from '@material-ui/core';
-import PeriodSelector, { Periods } from './PeriodSelector';
+import Periods from '../dataModel/periods';
+import PeriodSelector from './PeriodSelector';
 import './BudgetEntry.css';
 
 const BudgetEntry = ({ title, summaryPeriod }) => {

@@ -16,6 +16,12 @@ const higTheme = {
 				minHeight: '24px',
 			},
 		},
+
+		MuiExpansionPanelDetails: {
+			root: {
+				display: 'unset',
+			}
+		},
 	},
 };
 
