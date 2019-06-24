@@ -40,7 +40,8 @@ const BudgetEntry = ({ title, summaryPeriod, onChange, initialAmount }) => {
 						<PeriodSelector className="budget-entry-period budget-entry-input" period={period} onChange={newPeriod => setPeriod(newPeriod)} />
 					</Grid>
 					<Grid item xs={2} md={2}>
-						<p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round((amount * period) / summaryPeriod)}</p>
+						{/* <p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round((amount * period) / summaryPeriod)}</p> */}
+						<p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round(amount)}</p>
 					</Grid>
 				</Grid>
 			</div>

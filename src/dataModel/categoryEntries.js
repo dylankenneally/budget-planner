@@ -13,8 +13,6 @@ let categories = [
 			{ title: 'Other' },
 		],
 	},
-
-/*
 	{
 		title: 'Home & utilities',
 		entries: [
@@ -128,8 +126,6 @@ let categories = [
 			{ title: 'Other' },
 		],
 	},
-
-*/
 ];
 
 // add a default amount to each item, at some point this will need to come from persistent storage
