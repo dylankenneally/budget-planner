@@ -4,17 +4,12 @@ import { useTranslation } from 'react-i18next';
 import Periods from '../dataModel/periods';
 import PeriodSelector from './PeriodSelector';
 import CategoryGroup from './CategoryGroup';
+import categories from '../dataModel/categoryEntries';
 
 const App = () => {
 	const { t } = useTranslation();
 	const [mainPeriod, setMainPeriod] = React.useState(Periods.annually);
-
-	// will be moved, in development...
-	const homeGroups = [
-		{ title: 'Mortgage & rent', amount: 2500 },
-		{ title: 'Body corporate fees', amount: Math.round((1125*2)/12) },
-		{ title: 'Council rates', amount: Math.round(2500/12) },
-	];
+	let catElements = categories.map((category, index) => <CategoryGroup title={category.title} entries={category.entries} summaryPeriod={mainPeriod} positive={category.positive} key={index}/>);
 
 	return (
 		<>
@@ -24,7 +19,8 @@ const App = () => {
 
 			<PeriodSelector period={mainPeriod} onChange={newPeriod => setMainPeriod(newPeriod)} />
 
-			<CategoryGroup title="Home &amp; utilities" entries={homeGroups} summaryPeriod={mainPeriod} />
+			{/* bug: total not updated when top level is use ??? */}
+			{catElements}
 		</>
 	);
 };

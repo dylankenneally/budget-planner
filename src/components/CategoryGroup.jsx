@@ -13,7 +13,7 @@ import './CategoryGroup.css';
 import BudgetEntry from './BudgetEntry';
 
 const CategoryGroup = ({ title, entries, summaryPeriod, positive }) => {
-	const [amount, setAmount] = React.useState(entries.reduce((acc, cur) => cur.amount + (acc.amount || acc)));
+	const [amount, setAmount] = React.useState(entries.reduce((a, b) => a.amount !== undefined ? a.amount + b.amount : a + b.amount ));
 	const { t } = useTranslation();
 
 	let handleChanged = (newAmount, oldAmount) => {
