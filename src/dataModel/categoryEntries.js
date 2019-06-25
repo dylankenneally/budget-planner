@@ -130,7 +130,9 @@ let categories = [
 
 // add a default amount to each item, at some point this will need to come from persistent storage
 categories.forEach(category => {
-	category.entries = category.entries.map(v => { return { ...v, amount: 1 }});
+	category.entries = category.entries.map(v => {
+		return { ...v, amount: 1 };
+	});
 });
 
 export default categories;
