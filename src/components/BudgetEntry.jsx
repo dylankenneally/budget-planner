@@ -28,19 +28,20 @@ const BudgetEntry = ({ title, summaryPeriod, onChange, initialAmount }) => {
 					<Grid item xs={12} md={6}>{title}</Grid>
 					<Grid item xs={5} md={2}>
 						{/* Only allows positive integers */}
-						<div className=" budget-entry-input">
-						<TextField
-							className="budget-entry-entry"
-							value={amount}
-							onChange={entryChanged}
-						/>
+						<div className="budget-entry-input">
+							<TextField
+								className="budget-entry-entry"
+								value={amount}
+								onChange={entryChanged}
+							/>
 						</div>
 					</Grid>
 					<Grid item xs={5} md={2}>
 						<PeriodSelector className="budget-entry-period budget-entry-input" period={period} onChange={newPeriod => setPeriod(newPeriod)} />
 					</Grid>
 					<Grid item xs={2} md={2}>
-						<p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round((amount * period) / summaryPeriod)}</p>
+						{/* <p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round((amount * period) / summaryPeriod)}</p> */}
+						<p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round(amount)}</p>
 					</Grid>
 				</Grid>
 			</div>
@@ -56,7 +57,8 @@ BudgetEntry.propTypes = {
 };
 
 BudgetEntry.defaultProps = {
-	onChange: () => { }
+	onChange: () => { },
+	initialAmount: 0
 };
 
 export default BudgetEntry;
