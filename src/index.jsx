@@ -7,6 +7,19 @@ import './framework/i18n';
 import muiTheme from './framework/muiTheme';
 import App from './components/App';
 
+// ---------- example, TODO: remove
+import store from './dataModel/dataStore';
+
+function notifyAll(type, obj) {
+	console.log('**** all');
+	console.log(type);
+	console.dir(obj);
+}
+
+let unSubAll = store.subscribe(notifyAll);
+require('./dataModel/dataProvider');
+// ------------------- ^^ todo: remove
+
 const appWrapper =
 	<ThemeProvider theme={createMuiTheme(muiTheme)}>
 		<CssBaseline />
