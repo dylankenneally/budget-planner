@@ -1,6 +1,7 @@
 /* A light weight, transient (i.e. none persistent), data store object with eventing (notifications) */
 
 import uuidv1 from 'uuid';
+import defaultBudget from '../data/defaultBudget';
 
 class DataStore {
 	constructor() {
@@ -58,6 +59,11 @@ class DataStore {
 	set(type, object) {
 		this._data[type] = object;
 		this.notifyEvent(type, object);
+	}
+
+	// todo: this isn't working, also - would prefer for this store not to know about the defaultBudget, just the data provider to know about it
+	resetBudget() {
+		this.set('budget', defaultBudget);
 	}
 }
 

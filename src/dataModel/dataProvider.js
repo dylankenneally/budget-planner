@@ -10,19 +10,15 @@ class DataProvider {
 		}
 
 		store.set('budget', budget);
-		store.subscribe('budget', newBudget => {
-			window.localStorage.setItem('budget', JSON.stringify(newBudget));
-		});
+		store.subscribe('budget', newBudget => window.localStorage.setItem('budget', JSON.stringify(newBudget)));
 	}
 
 	get _hasBudget() {
-		// todo: do we have a user budget we can work with?
-		return false;
+		return window.localStorage.getItem('budget') !== null;
 	}
 
 	_loadBudget() {
-		// todo:
-		throw new Error('Not implemented yet');
+		return JSON.parse(window.localStorage.getItem('budget'));
 	}
 }
 

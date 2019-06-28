@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Typography from '@material-ui/core/Typography';
+import React, { useState, useEffect } from 'react';
+import { Button, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Periods from '../dataModel/periods';
 import store from '../dataModel/dataStore';
@@ -7,9 +7,13 @@ import PeriodSelector from './PeriodSelector';
 import CategoryGroup from './CategoryGroup';
 
 const App = () => {
-	const [budget] = useState(store.get('budget'));
+	const [budget, setBudget] = useState(store.get('budget'));
 	const [mainPeriod, setMainPeriod] = useState(Periods.annually);
 	const { t } = useTranslation();
+
+	useEffect(() => {
+		return store.subscribe('budget', b => setBudget(b));
+	});
 
 	let catElements = budget.map((category, index) =>
 		<CategoryGroup
@@ -32,6 +36,7 @@ const App = () => {
 			</Typography>
 
 			<PeriodSelector period={mainPeriod} onChange={newPeriod => setMainPeriod(newPeriod)} />
+			<Button onClick={() => store.resetBudget()}>{t('reset')}</Button>
 			{catElements}
 		</>
 	);
