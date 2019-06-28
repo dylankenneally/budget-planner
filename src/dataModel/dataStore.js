@@ -29,7 +29,7 @@ class DataStore {
 	}
 
 	// subscribe to change notifications from this store; returns a function that can be used to un-subscribe. Use type to specialise notification types
-	subscribe(handler, type) {
+	subscribe(type, handler) {
 		console.assert(typeof handler === 'function'); // we must have a function to call
 		if (typeof handler !== 'function') {
 			return undefined;
@@ -58,16 +58,6 @@ class DataStore {
 	set(type, object) {
 		this._data[type] = object;
 		this.notifyEvent(type, object);
-	}
-
-	// Gets the client app (if present); client app being the most common type stored
-	get app() {
-		return this.get('app');
-	}
-
-	// Sets the client app; client app being the most common type stored
-	set app(clientApp) {
-		this.set('app', clientApp);
 	}
 }
 

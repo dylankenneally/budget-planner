@@ -11,10 +11,6 @@
 	padding: 6px;
 }
 
-.budget-entry-accumulated {
-	text-align: right;
-}
-
 .budget-entry-entry,
 .budget-entry-period {
 	width: 100%;

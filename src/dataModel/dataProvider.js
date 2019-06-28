@@ -1,14 +1,25 @@
 // Data provider
-
-import BudgetItem from './budgetItem';
-import Periods from './periods';
 import store from './dataStore';
+import defaultBudget from '../data/defaultBudget';
 
 class DataProvider {
 	constructor() {
-		let pay = new BudgetItem(123.45, Periods.monthly);
+		let budget = defaultBudget;
+		if (this._hasBudget) {
+			budget = this._loadBudget();
+		}
 
-		store.set('pay', pay);
+		store.set('budget', budget);
+	}
+
+	get _hasBudget() {
+		// todo: do we have a user budget we can work with?
+		return false;
+	}
+
+	_loadBudget() {
+		// todo:
+		throw new Error('Not implemented yet');
 	}
 }
 

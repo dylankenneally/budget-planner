@@ -1,5 +1,6 @@
 import Periods from './periods';
 
+// todo: this class is not in use? do you want it?
 class BudgetItem {
 	constructor(value, period) {
 		this.value = value;
