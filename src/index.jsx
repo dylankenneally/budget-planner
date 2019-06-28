@@ -5,9 +5,8 @@ import { createMuiTheme  } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './framework/i18n';
 import muiTheme from './framework/muiTheme';
+import './dataModel/dataProvider';
 import App from './components/App';
-
-require('./dataModel/dataProvider');
 
 const appWrapper =
 	<ThemeProvider theme={createMuiTheme(muiTheme)}>

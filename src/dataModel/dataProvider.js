@@ -10,6 +10,9 @@ class DataProvider {
 		}
 
 		store.set('budget', budget);
+		store.subscribe('budget', newBudget => {
+			window.localStorage.setItem('budget', JSON.stringify(newBudget));
+		});
 	}
 
 	get _hasBudget() {

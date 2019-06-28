@@ -18,7 +18,10 @@ const App = () => {
 			summaryPeriod={mainPeriod}
 			positive={category.positive}
 			key={index}
-			onChange={(updatedCategory) => { budget[index] = updatedCategory; }}
+			onChange={(updatedCategory) => {
+				budget[index] = {...category, updatedCategory };
+				store.set('budget', budget);
+			}}
 		/>
 	);
 
