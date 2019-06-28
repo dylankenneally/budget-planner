@@ -11,11 +11,11 @@ module.exports = {
 			list: ['t'],
 			extensions: ['.js', '.jsx']
 		},
-		lngs: ['en-US'],
+		lngs: ['en'],
 		ns: [
 			'translation'
 		],
-		defaultLng: 'en-US',
+		defaultLng: 'en',
 		defaultNs: 'translation',
 		defaultValue: '__STRING_NOT_TRANSLATED__',
 		resource: {
