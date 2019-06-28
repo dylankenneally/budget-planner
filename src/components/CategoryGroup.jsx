@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import {
@@ -12,12 +12,15 @@ import Periods from '../dataModel/periods';
 import './CategoryGroup.css';
 import BudgetEntry from './BudgetEntry';
 
-const CategoryGroup = ({ title, entries, summaryPeriod, positive }) => {
-	const [amount, setAmount] = React.useState(entries.reduce((a, b) => a.amount !== undefined ? a.amount + b.amount : a + b.amount ));
+const CategoryGroup = ({ title, entries, summaryPeriod, positive, onChange }) => {
+	console.assert(entries.length >= 1, 'At least one entry is required for a group');
+	const [amount, setAmount] = useState(entries.length === 1 ? entries[0].amount : entries.reduce((a, b) => a.amount !== undefined ? a.amount + b.amount : a + b.amount));
 	const { t } = useTranslation();
 
-	let handleChanged = (newAmount, oldAmount) => {
-		setAmount((amount - oldAmount) + newAmount);
+	const entryChanged = (entry, entryAmount, entryPeriod) => {
+		setAmount((amount - entry.amount) + entryAmount);
+		entry.amount = entryAmount; // reset the entry amount, otherwise we can't calculate the total amount
+		onChange(entries);
 	};
 
 	return (
@@ -29,7 +32,12 @@ const CategoryGroup = ({ title, entries, summaryPeriod, positive }) => {
 
 			<ExpansionPanelDetails>
 				{entries.map((entry, index) => {
-					return <BudgetEntry key={index} title={entry.title} initialAmount={entry.amount} summaryPeriod={summaryPeriod} onChange={handleChanged} />;
+					return <BudgetEntry
+						key={index}
+						title={entry.title}
+						initialAmount={entry.amount}
+						onChange={(eA, eP) => entryChanged(entry, eA, eP)}
+					/>;
 				})}
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
@@ -41,10 +49,12 @@ CategoryGroup.propTypes = {
 	entries: PropTypes.arrayOf(PropTypes.object).isRequired,
 	summaryPeriod: PropTypes.oneOf(Object.values(Periods)).isRequired,
 	positive: PropTypes.bool,
+	onChange: PropTypes.func,
 };
 
 CategoryGroup.defaultProps = {
 	positive: false,
+	onChange: () => { },
 };
 
 export default CategoryGroup;

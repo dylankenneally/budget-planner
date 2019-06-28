@@ -1,3 +1,4 @@
+// todo: these strings should be localised
 let categories = [
 	{
 		title: 'Income',
@@ -128,10 +129,10 @@ let categories = [
 	},
 ];
 
-// add a default amount to each item, at some point this will need to come from persistent storage
+// add a default amount to each item
 categories.forEach(category => {
 	category.entries = category.entries.map(v => {
-		return { ...v, amount: 1 };
+		return { ...v, amount: 0 };
 	});
 });
 

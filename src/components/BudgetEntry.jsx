@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import { Container, Grid, TextField } from '@material-ui/core';
 import Periods from '../dataModel/periods';
 import PeriodSelector from './PeriodSelector';
 import './BudgetEntry.css';
 
-const BudgetEntry = ({ title, summaryPeriod, onChange, initialAmount }) => {
+const BudgetEntry = ({ title, onChange, initialAmount }) => {
 	const [amount, setAmount] = React.useState(initialAmount);
-	const [period, setPeriod] = React.useState(Periods.monthly);
-	const { t } = useTranslation();
+	const [period, setPeriod] = React.useState(Periods.annually);
 
-	let entryChanged = (event) => {
+	const amountChanged = (event) => {
 		let { value } = event.target;
 		value = parseInt(value.toString(), 10);
 		if (value !== undefined && !isNaN(value)) {
-			const old = amount;
 			setAmount(value);
-			onChange(value, old);
+			onChange(value, period);
 		}
+	};
+
+	const periodChanged = (p) => {
+		setPeriod(p);
+		onChange(amount, period);
 	};
 
 	return (
@@ -26,22 +28,18 @@ const BudgetEntry = ({ title, summaryPeriod, onChange, initialAmount }) => {
 			<div  className="budget-entry-container">
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={6}>{title}</Grid>
-					<Grid item xs={5} md={2}>
+					<Grid item xs={6} md={3}>
 						{/* Only allows positive integers */}
 						<div className="budget-entry-input">
 							<TextField
 								className="budget-entry-entry"
 								value={amount}
-								onChange={entryChanged}
+								onChange={amountChanged}
 							/>
 						</div>
 					</Grid>
-					<Grid item xs={5} md={2}>
-						<PeriodSelector className="budget-entry-period budget-entry-input" period={period} onChange={newPeriod => setPeriod(newPeriod)} />
-					</Grid>
-					<Grid item xs={2} md={2}>
-						{/* <p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round((amount * period) / summaryPeriod)}</p> */}
-						<p className="budget-entry-accumulated">{t('currencySymbol')}{Math.round(amount)}</p>
+					<Grid item xs={6} md={3}>
+						<PeriodSelector className="budget-entry-period budget-entry-input" period={period} onChange={periodChanged} />
 					</Grid>
 				</Grid>
 			</div>
@@ -51,7 +49,6 @@ const BudgetEntry = ({ title, summaryPeriod, onChange, initialAmount }) => {
 
 BudgetEntry.propTypes = {
 	title: PropTypes.string.isRequired,
-	summaryPeriod: PropTypes.oneOf(Object.values(Periods)).isRequired,
 	onChange: PropTypes.func,
 	initialAmount: PropTypes.number,
 };

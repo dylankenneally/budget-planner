@@ -10,5 +10,6 @@
     "quarterly": "Quarterly",
     "annually": "Annually"
   },
-  "currencySymbol": "$"
+  "currencySymbol": "$",
+  "reset": "Restore default"
 }

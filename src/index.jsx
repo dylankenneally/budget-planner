@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme  } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './framework/i18n';
 import muiTheme from './framework/muiTheme';
+import './dataModel/dataProvider';
 import App from './components/App';
 
 const appWrapper =
