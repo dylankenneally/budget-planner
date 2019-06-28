@@ -15,7 +15,7 @@ const App = () => {
 		return store.subscribe('budget', b => setBudget(b));
 	});
 
-	let catElements = budget.map((category, index) =>
+	let catElements = budget && budget.map((category, index) =>
 		<CategoryGroup
 			title={category.title}
 			entries={category.entries}
