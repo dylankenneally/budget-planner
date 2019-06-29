@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Periods from '../dataModel/periods';
 import store from '../dataModel/dataStore';
 import PeriodSelector from './PeriodSelector';
 import CategoryGroup from './CategoryGroup';
+import ResultsChart from './ResultsChart';
 
 const App = () => {
-	const [budget, setBudget] = useState(store.get('budget'));
+	const [budget] = useState(store.get('budget'));
 	const [mainPeriod, setMainPeriod] = useState(Periods.annually);
 	const { t } = useTranslation();
 
-	useEffect(() => {
-		return store.subscribe('budget', b => setBudget(b));
-	});
-
-	let catElements = budget && budget.map((category, index) =>
+	const catElements = budget && budget.map(category =>
 		<CategoryGroup
 			title={category.title}
 			entries={category.entries}
-			summaryPeriod={mainPeriod}
 			positive={category.positive}
-			key={index}
-			onChange={(updatedCategory) => {
-				budget[index] = {...category, updatedCategory };
-				store.set('budget', budget);
-			}}
+			key={category.title}
 		/>
 	);
 
@@ -38,6 +30,7 @@ const App = () => {
 			<PeriodSelector period={mainPeriod} onChange={newPeriod => setMainPeriod(newPeriod)} />
 			<Button onClick={() => store.resetBudget()}>{t('reset')}</Button>
 			{catElements}
+			<ResultsChart budget={budget} />
 		</>
 	);
 };
