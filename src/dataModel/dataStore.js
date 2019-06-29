@@ -61,9 +61,14 @@ class DataStore {
 		this.notifyEvent(type, object);
 	}
 
-	// todo: this isn't working, also - would prefer for this store not to know about the defaultBudget, just the data provider to know about it
 	resetBudget() {
-		this.set('budget', defaultBudget);
+		for (let item in this._data) {
+			if (item !== 'budget') {
+				const entry = this.get(item);
+				entry.amount = 0;
+				this.set(item, entry);
+			}
+		}
 	}
 }
 
