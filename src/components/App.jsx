@@ -5,6 +5,7 @@ import Periods from '../dataModel/periods';
 import store from '../dataModel/dataStore';
 import PeriodSelector from './PeriodSelector';
 import CategoryGroup from './CategoryGroup';
+import ResultsChart from './ResultsChart';
 
 const App = () => {
 	const [budget, setBudget] = useState(store.get('budget'));
@@ -12,10 +13,13 @@ const App = () => {
 	const { t } = useTranslation();
 
 	useEffect(() => {
-		return store.subscribe('budget', b => setBudget(b));
+		return store.subscribe('budget', b => {
+			// todo: b === budget === true, so no wonder updates don't get dispatched..., immutable objects needed, entries in the store, not the budget as a whole
+			setBudget(b);
+		});
 	});
 
-	let catElements = budget && budget.map((category, index) =>
+	const catElements = budget && budget.map((category, index) =>
 		<CategoryGroup
 			title={category.title}
 			entries={category.entries}
@@ -23,7 +27,7 @@ const App = () => {
 			positive={category.positive}
 			key={index}
 			onChange={(updatedCategory) => {
-				budget[index] = {...category, updatedCategory };
+				budget[index] = { ...category, updatedCategory };
 				store.set('budget', budget);
 			}}
 		/>
@@ -38,6 +42,7 @@ const App = () => {
 			<PeriodSelector period={mainPeriod} onChange={newPeriod => setMainPeriod(newPeriod)} />
 			<Button onClick={() => store.resetBudget()}>{t('reset')}</Button>
 			{catElements}
+			<ResultsChart budget={budget} />
 		</>
 	);
 };

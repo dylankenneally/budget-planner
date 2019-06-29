@@ -24,7 +24,7 @@ const CategoryGroup = ({ title, entries, summaryPeriod, positive, onChange }) =>
 	};
 
 	return (
-		<ExpansionPanel defaultExpanded>
+		<ExpansionPanel>
 			<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 				<Typography className="category-group-title">{title}</Typography>
 				<Typography className="category-group-accumulated">{(positive ? '' : '-' )+ t('currencySymbol')}{Math.round((amount))}</Typography>
