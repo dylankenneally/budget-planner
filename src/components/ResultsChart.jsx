@@ -80,9 +80,6 @@ class ResultsChart extends React.Component {
 		}
 
 		this.chart.update();
-
-		// todo: update the fonts being used
-		// todo: update the tooltip to have $value & be styled
 	}
 
 	render() {
