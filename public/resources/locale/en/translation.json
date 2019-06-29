@@ -11,5 +11,7 @@
     "annually": "Annually"
   },
   "currencySymbol": "$",
-  "reset": "Restore default"
+  "reset": "Restore default",
+  "negativeBalance": "You're spending ${{balance}} more than you have!",
+  "positiveBalance": "Your budget is in surplus by ${{balance}}."
 }

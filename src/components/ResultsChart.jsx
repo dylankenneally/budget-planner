@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Chart from 'chart.js';
+import store from '../dataModel/dataStore';
+import { withTranslation } from 'react-i18next';
 
 const colours = [
 	'rgba(255, 99, 132, 0.7)',
@@ -7,76 +10,89 @@ const colours = [
 	'rgba(255, 206, 86, 0.7)',
 	'rgba(75, 192, 192, 0.7)',
 	'rgba(153, 102, 255, 0.7)',
-	'rgba(255, 159, 64, 0.7)'
+	'rgba(255, 159, 64, 0.7)',
+	'rgba(54, 159, 64, 0.7)'
 ];
 
-// todo: put props in, skipping for now as not done with this objects props design
-/* eslint-disable react/prop-types */
-
-// todo: not updating on edits, store isn't been passed through from parent component
 class ResultsChart extends React.Component {
-	componentDidMount() {
-		this.updateCanvas();
+	constructor(props) {
+		super(props);
+		this.state = {
+			budget: this.props.budget,
+			update: 0 // hack, quick way to get this object to re-render
+		};
 	}
 
-	componentDidUpdate() {
-        this.updateCanvas();
-    }
+	componentDidMount() {
+		this.unSubStore = store.subscribe(null, () => this.setState({ update: this.state.update + 1 }));
 
-	updateCanvas() {
-		const ctx = document.getElementById('chartCanvas');
+		const outgoings = this.state.budget.filter(entry => entry.positive !== true);
+		const labels = outgoings.map(({ title }) => title);
 
-		const incomings = this.props.budget.filter(entry => entry.positive === true);
-		const outgoings = this.props.budget.filter(entry => entry.positive !== true);
-
-		let totalIncome = incomings.map(({ entries }) => {
-			return entries.reduce((sum, { amount }) => sum + amount, 0);
-		});
-		totalIncome = totalIncome.reduce((a, b) => a + b);
-
-		// todo: you're mapping over this object multiple times, here and in the datasets below, just do it once
-		let totalOutgoing = outgoings.map(({ entries }) => {
-			return entries.reduce((sum, { amount }) => sum + amount, 0);
-		});
-		totalOutgoing = totalOutgoing.reduce((a, b) => a + b);
-
-		let chartTitle = `Your budget breakdown: $${totalIncome - totalOutgoing}`; // todo: string table
-
-		console.log(totalIncome, totalOutgoing);
-
-		// todo: update the fonts being used
-		// todo: update the tooltip to have $value & be styled
-		// no-unused-vars: chartCanvas isn't used, the ctor for Chart does all the work via the canvas context
-		const chartCanvas = new Chart(ctx, { //eslint-disable-line no-unused-vars
+		this.canvas = document.getElementById('chartCanvas');
+		this.chart = new Chart(this.canvas, {
 			type: 'pie',
 			data: {
-				labels: outgoings.map(({ title }) => title),
-				datasets: [{
-					// get the total for each category
-					data: outgoings.map(({ entries }) => {
-						return entries.reduce((sum, { amount }) => sum + amount, 0);
-					}),
-					backgroundColor: outgoings.map((v, i) => colours[i % colours.length]),
-					borderWidth: [1, 1]
-				}]
+				labels: labels,
 			},
 			options: {
 				title: {
 					display: true,
-					text: chartTitle,
 					position: 'top'
 				},
 				rotation: -0.7 * Math.PI, // looks a little better like this
 				responsive: false,
 			},
 		});
+
+		this.updateCanvas();
+	}
+
+	componentWillUnmount() {
+		this.unSubStore();
+	}
+
+	componentDidUpdate() {
+		this.updateCanvas();
+	}
+
+	updateCanvas() {
+		const incomings = this.state.budget.filter(entry => entry.positive === true);
+		const outgoings = this.state.budget.filter(entry => entry.positive !== true);
+
+		let totalIncome = incomings.map(({ entries }) => entries.reduce((sum, { amount }) => sum + amount, 0));
+		totalIncome = totalIncome.reduce((a, b) => a + b);
+
+		const categoryTotals = outgoings.map(({ entries }) => entries.reduce((sum, { amount }) => sum + amount, 0));
+		const totalOutgoing = categoryTotals.reduce((a, b) => a + b);
+
+		this.chart.data.datasets = [{
+			data: categoryTotals,
+			backgroundColor: outgoings.map((v, i) => colours[i % colours.length]),
+			borderWidth: [1, 1]
+		}];
+
+		const balance = totalIncome - totalOutgoing;
+		if (balance < 0) {
+			this.chart.options.title.text = this.props.t('negativeBalance', { balance: balance, how: 'great' });
+		} else {
+			this.chart.options.title.text = this.props.t('positiveBalance', { balance });
+		}
+
+		this.chart.update();
+
+		// todo: update the fonts being used
+		// todo: update the tooltip to have $value & be styled
 	}
 
 	render() {
-		return (
-			<canvas id="chartCanvas" width={300} height={300} />
-		);
+		return <canvas id="chartCanvas" width={450} height={450} />;
 	}
 }
 
-export default ResultsChart;
+ResultsChart.propTypes = {
+	budget: PropTypes.array.isRequired,
+	t: PropTypes.func.isRequired, // supplied via withTranslation below
+};
+
+export default withTranslation()(ResultsChart);
