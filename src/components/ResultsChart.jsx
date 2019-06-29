@@ -30,6 +30,8 @@ class ResultsChart extends React.Component {
 		const labels = outgoings.map(({ title }) => title);
 
 		this.canvas = document.getElementById('chartCanvas');
+		Chart.defaults.global.defaultFontFamily = "'Roboto', 'Helvetica', 'Arial', sans-serif";
+		Chart.defaults.global.defaultFontSize = 16;
 		this.chart = new Chart(this.canvas, {
 			type: 'pie',
 			data: {
@@ -41,7 +43,9 @@ class ResultsChart extends React.Component {
 					position: 'top'
 				},
 				rotation: -0.7 * Math.PI, // looks a little better like this
-				responsive: false,
+				legend: {
+					position: 'left',
+				}
 			},
 		});
 
@@ -83,7 +87,7 @@ class ResultsChart extends React.Component {
 	}
 
 	render() {
-		return <canvas id="chartCanvas" width={450} height={450} />;
+		return <canvas id="chartCanvas" width={900} height={450} />;
 	}
 }
 
