@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Chart from 'chart.js';
 import store from '../dataModel/dataStore';
 import { withTranslation } from 'react-i18next';
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 const colours = [
 	'rgba(255, 99, 132, 0.7)',
@@ -19,7 +20,7 @@ class ResultsChart extends React.Component {
 		super(props);
 		this.state = {
 			budget: this.props.budget,
-			update: 0 // hack, quick way to get this object to re-render
+			update: 0, // hack, quick way to get this object to re-render,
 		};
 	}
 
@@ -76,6 +77,8 @@ class ResultsChart extends React.Component {
 			borderWidth: [1, 1]
 		}];
 
+		this.chart.options.legend.display = isWidthUp('sm', this.props.width);
+
 		const balance = totalIncome - totalOutgoing;
 		if (balance < 0) {
 			this.chart.options.title.text = this.props.t('negativeBalance', { balance: balance, how: 'great' });
@@ -94,6 +97,7 @@ class ResultsChart extends React.Component {
 ResultsChart.propTypes = {
 	budget: PropTypes.array.isRequired,
 	t: PropTypes.func.isRequired, // supplied via withTranslation below
+	width: PropTypes.string.isRequired, /// supplied with withWidth below, as a breakpoint string
 };
 
-export default withTranslation()(ResultsChart);
+export default withTranslation()(withWidth()(ResultsChart));
