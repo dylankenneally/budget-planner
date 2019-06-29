@@ -2,31 +2,16 @@
 import store from './dataStore';
 import defaultBudget from '../data/defaultBudget';
 
-class DataProvider {
-	constructor() {
-		let budget = defaultBudget;
-		if (this._hasBudget) {
-			budget = this._loadBudget();
+store.set('budget', defaultBudget);
+defaultBudget.forEach(category => {
+	category.entries.forEach(entry => {
+		const id = category.title + entry.title;
+		let amount = window.localStorage.getItem(id);
+		if (amount) {
+			entry.amount = parseInt(amount, 10);
 		}
 
-		store.set('budget', budget);
-
-		budget.forEach(category => {
-			category.entries.forEach(entry => {
-				store.set(category.title + entry.title, entry);
-				// todo: need to save/load too
-			});
-		});
-	}
-
-	get _hasBudget() {
-		return window.localStorage.getItem('budget') !== null;
-	}
-
-	_loadBudget() {
-		return JSON.parse(window.localStorage.getItem('budget'));
-	}
-}
-
-const dp = new DataProvider();
-export default dp;
+		store.set(id, entry);
+		store.subscribe(id, (e) => window.localStorage.setItem(id, e.amount));
+	});
+});
