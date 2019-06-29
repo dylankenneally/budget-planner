@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Grid, TextField } from '@material-ui/core';
 import Periods from '../dataModel/periods';
@@ -10,6 +10,8 @@ const BudgetEntry = ({ id }) => {
 	const entry = store.get(id);
 	const [amount, setAmount] = useState(entry.amount);
 	const [period, setPeriod] = useState(Periods.annually);
+
+	useEffect(() => store.subscribe(id, e => setAmount(e.amount)));
 
 	const amountChanged = (event) => {
 		let { value } = event.target;
