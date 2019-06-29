@@ -1,7 +1,6 @@
 /* A light weight, transient (i.e. none persistent), data store object with eventing (notifications) */
 
 import uuidv1 from 'uuid';
-import defaultBudget from '../data/defaultBudget';
 
 class DataStore {
 	constructor() {
