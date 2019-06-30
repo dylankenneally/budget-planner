@@ -12,7 +12,7 @@ import './CategoryGroup.css';
 import BudgetEntry from './BudgetEntry';
 import store from '../dataModel/dataStore';
 
-const CategoryGroup = ({ title, entries, positive }) => {
+const CategoryGroup = ({ id, title, entries, positive }) => {
 	const calcTotal = () => {
 		let result = entries.map(({amount}) => amount);
 		result = result.reduce((total, val) => total + val);
@@ -24,7 +24,7 @@ const CategoryGroup = ({ title, entries, positive }) => {
 	// subscribe to changes to the entry so we can update the total
 	useEffect(() => {
 		const subscribers = entries.map(entry => {
-			return store.subscribe(title + entry.title, data => {
+			return store.subscribe(id + entry.id, data => {
 				setTotal(calcTotal());
 			});
 		});
@@ -44,13 +44,14 @@ const CategoryGroup = ({ title, entries, positive }) => {
 			</ExpansionPanelSummary>
 
 			<ExpansionPanelDetails>
-				{ entries.map(entry => <BudgetEntry id={title + entry.title} key={title + entry.title} />) }
+				{ entries.map(entry => <BudgetEntry id={id + entry.id} key={id + entry.id} />) }
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
 	);
 };
 
 CategoryGroup.propTypes = {
+	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	entries: PropTypes.arrayOf(PropTypes.object).isRequired,
 	positive: PropTypes.bool,

@@ -81,7 +81,7 @@ class ResultsChart extends React.Component {
 
 		const balance = totalIncome - totalOutgoing;
 		if (balance < 0) {
-			this.chart.options.title.text = this.props.t('negativeBalance', { balance: balance, how: 'great' });
+			this.chart.options.title.text = this.props.t('negativeBalance', { balance: balance });
 		} else {
 			this.chart.options.title.text = this.props.t('positiveBalance', { balance });
 		}

@@ -5,7 +5,7 @@ import defaultBudget from '../data/defaultBudget';
 store.set('budget', defaultBudget);
 defaultBudget.forEach(category => {
 	category.entries.forEach(entry => {
-		const id = category.title + entry.title;
+		const id = category.id + entry.id;
 		let amount = window.localStorage.getItem(id);
 		if (amount) {
 			entry.amount = parseInt(amount, 10);

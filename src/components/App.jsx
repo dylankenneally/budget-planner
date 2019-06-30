@@ -14,10 +14,11 @@ const App = () => {
 
 	const catElements = budget && budget.map(category =>
 		<CategoryGroup
+			id={category.id}
 			title={category.title}
 			entries={category.entries}
 			positive={category.positive}
-			key={category.title}
+			key={category.id}
 		/>
 	);
 
