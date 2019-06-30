@@ -19,6 +19,7 @@ const App = () => {
 			entries={category.entries}
 			positive={category.positive}
 			key={category.id}
+			appPeriod={mainPeriod}
 		/>
 	);
 
