@@ -55,8 +55,25 @@ ElevationScroll.propTypes = {
 	children: PropTypes.node.isRequired
 };
 
-// eslint-disable-next-line
-const App = (props) => {
+const TopAppBar = (props) => {
+	const { t } = useTranslation();
+	return (
+		<>
+			<ElevationScroll {...props}>
+				<AppBar color="default">
+					<Toolbar>
+						<Typography variant="h6" color="inherit">
+							{t('budget-planner')}
+						</Typography>
+					</Toolbar>
+				</AppBar>
+			</ElevationScroll>
+			<Toolbar />
+		</>
+	);
+};
+
+const App = () => {
 	const { t } = useTranslation();
 	const [budget] = useState(store.get('budget'));
 
@@ -76,17 +93,7 @@ const App = (props) => {
 
 	return (
 		<>
-			<ElevationScroll {...props}>
-				<AppBar>
-					<Toolbar>
-						<Typography variant="h6" color="inherit">
-							{t('budget-planner')}
-						</Typography>
-					</Toolbar>
-				</AppBar>
-			</ElevationScroll>
-			<Toolbar />
-
+			<TopAppBar />
 			<Header />
 			{catElements}
 
