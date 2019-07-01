@@ -11,7 +11,7 @@
     "annually": "Annually"
   },
   "currencySymbol": "$",
-  "reset": "Restore default",
+  "reset": "Reset budget",
   "negativeBalance": "You're spending ${{balance}} more than you have!",
   "positiveBalance": "Your budget is in surplus by ${{balance}}.",
   "Income": "Income",
@@ -100,5 +100,7 @@
   "Excursions": "Excursions",
   "School uniforms": "School uniforms",
   "Other school needs": "Other school needs",
-  "Child support payment": "Child support payment"
+  "Child support payment": "Child support payment",
+  "summary": "Your budget summary",
+  "reset-header": "Would you like to start again?"
 }
