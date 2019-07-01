@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/budget-planner/static/css/main.90b74262.chunk.css",
+    "main.js": "/budget-planner/static/js/main.b4c29381.chunk.js",
+    "main.js.map": "/budget-planner/static/js/main.b4c29381.chunk.js.map",
+    "runtime~main.js": "/budget-planner/static/js/runtime~main.8ec2c2e1.js",
+    "runtime~main.js.map": "/budget-planner/static/js/runtime~main.8ec2c2e1.js.map",
+    "static/js/2.35ff0048.chunk.js": "/budget-planner/static/js/2.35ff0048.chunk.js",
+    "static/js/2.35ff0048.chunk.js.map": "/budget-planner/static/js/2.35ff0048.chunk.js.map",
+    "index.html": "/budget-planner/index.html",
+    "precache-manifest.afb244655b7fadfae5c8e03742ca6dbc.js": "/budget-planner/precache-manifest.afb244655b7fadfae5c8e03742ca6dbc.js",
+    "service-worker.js": "/budget-planner/service-worker.js",
+    "static/css/main.90b74262.chunk.css.map": "/budget-planner/static/css/main.90b74262.chunk.css.map"
+  }
+}
