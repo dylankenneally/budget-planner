@@ -20,5 +20,6 @@ defaultBudget.forEach(category => {
 });
 
 let summaryPeriod = window.localStorage.getItem('summary-period') || Periods.annually;
+summaryPeriod = parseInt(summaryPeriod, 10);
 store.set('summary-period', summaryPeriod);
 store.subscribe('summary-period', (p) => window.localStorage.setItem('summary-period', p));
