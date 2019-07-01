@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
+	AppBar,
 	Button,
 	ExpansionPanel,
 	ExpansionPanelDetails,
 	ExpansionPanelSummary,
 	Grid,
+	Toolbar,
 	Typography,
+	useScrollTrigger,
 } from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
 import { useTranslation } from 'react-i18next';
@@ -30,18 +34,36 @@ const Header = () => {
 			<Grid item xs={4}>
 				<div className="header-text">
 					{t('view-as')}&nbsp;
-					<PeriodSelector period={period} onChange={newPeriod => store.set('summary-period', newPeriod) } />
+					<PeriodSelector period={period} onChange={newPeriod => store.set('summary-period', newPeriod)} />
 				</div>
 			</Grid>
 		</Grid>
 	);
 };
 
-const App = () => {
-	const [budget] = useState(store.get('budget'));
-	const [mainPeriod, setMainPeriod] = useState(store.get('summary-period'));
-	const { t } = useTranslation();
+function ElevationScroll(props) {
+	const { children } = props;
+	const trigger = useScrollTrigger({
+		disableHysteresis: true,
+		threshold: 0,
+	});
 
+	return React.cloneElement(children, {
+		elevation: trigger ? 4 : 0,
+	});
+}
+
+ElevationScroll.propTypes = {
+	children: PropTypes.node.isRequired
+};
+
+
+// eslint-disable-next-line
+const App = (props) => {
+	const { t } = useTranslation();
+	const [budget] = useState(store.get('budget'));
+
+	const [mainPeriod, setMainPeriod] = useState(store.get('summary-period'));
 	store.subscribe('summary-period', (p) => setMainPeriod(p));
 
 	const catElements = budget && budget.map(category =>
@@ -57,6 +79,17 @@ const App = () => {
 
 	return (
 		<>
+			<ElevationScroll {...props}>
+				<AppBar>
+					<Toolbar>
+						<Typography variant="h6" color="inherit">
+							{t('budget-planner')}
+						</Typography>
+					</Toolbar>
+				</AppBar>
+			</ElevationScroll>
+			<Toolbar />
+
 			<Header />
 			{catElements}
 

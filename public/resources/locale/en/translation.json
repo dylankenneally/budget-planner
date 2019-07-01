@@ -101,5 +101,6 @@
   "summary": "Your budget summary",
   "reset-header": "Would you like to start again?",
   "app-title": "Work out where your money is going with this budget planner tool",
-  "view-as": "View your budget:"
+  "view-as": "View your budget:",
+  "budget-planner": "Budget Planner"
 }
