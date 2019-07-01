@@ -32,7 +32,7 @@ const App = () => {
 			<PeriodSelector period={mainPeriod} onChange={newPeriod => setMainPeriod(newPeriod)} />
 			<Button onClick={() => store.resetBudget()}>{t('reset')}</Button>
 			{catElements}
-			<ResultsChart budget={budget} />
+			<ResultsChart budget={budget} period={mainPeriod} />
 		</>
 	);
 };
