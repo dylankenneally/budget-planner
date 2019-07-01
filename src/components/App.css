@@ -1,0 +1,13 @@
+.header-text {
+	text-align: right;
+}
+
+#root {
+	width: 100%;
+	max-width: 1200px;
+	display: inline-block;
+}
+
+body {
+	text-align: center;
+}

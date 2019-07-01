@@ -1,6 +1,7 @@
 /* A light weight, transient (i.e. none persistent), data store object with eventing (notifications) */
 
 import uuidv1 from 'uuid';
+import Periods from './periods';
 
 class DataStore {
 	constructor() {
@@ -62,12 +63,15 @@ class DataStore {
 
 	resetBudget() {
 		for (let item in this._data) {
-			if (item !== 'budget') {
+			if (item !== 'budget' && item !== 'summary-period') {
 				const entry = this.get(item);
 				entry.amount = 0;
+				entry.period = Periods.monthly;
 				this.set(item, entry);
 			}
 		}
+
+		this.set('summary-period', Periods.annually);
 	}
 }
 

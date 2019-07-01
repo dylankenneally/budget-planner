@@ -1,5 +1,12 @@
 const higTheme = {
 	overrides: {
+		MuiAppBar: {
+			colorDefault: {
+				backgroundColor: '#fafafa',
+				borderBottom: '1px rgba(0,0,0,0.2) solid',
+			}
+		},
+
 		MuiInput: {
 			underline: {
 				'&:before': {

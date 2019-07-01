@@ -10,7 +10,10 @@ const BudgetEntry = ({ id }) => {
 	const [amount, setAmount] = useState(entry.amount);
 	const [period, setPeriod] = useState(entry.period);
 
-	useEffect(() => store.subscribe(id, e => setAmount(e.amount)));
+	useEffect(() => store.subscribe(id, e => {
+		setAmount(e.amount);
+		setPeriod(e.period);
+	}));
 
 	const amountChanged = (event) => {
 		let { value } = event.target;
