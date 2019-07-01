@@ -1,4 +1,6 @@
 import i18next from 'i18next';
+import Periods from '../dataModel/periods';
+import store from '../dataModel/dataStore';
 
 let categories = [
 	{
@@ -6,7 +8,7 @@ let categories = [
 		positive: true,
 		entries: [
 			{ id: 'Your take - home pay' },
-			{ id: 'Your partner\'s take-home pay ' },
+			{ id: 'Your partner\'s take-home pay' },
 			{ id: 'Bonuses & overtime' },
 			{ id: 'Income from savings & investments' },
 			{ id: 'Centrelink benefits' },
@@ -130,10 +132,10 @@ let categories = [
 	},
 ];
 
-// add a default amount to each item
+// add a default amount & period to each item
 categories.forEach(category => {
 	category.entries = category.entries.map(v => {
-		return { ...v, amount: 0 };
+		return { ...v, amount: 0, period: Periods.monthly };
 	});
 });
 
@@ -141,8 +143,10 @@ categories.forEach(category => {
 i18next.on('initialized', () => {
 	categories.forEach(category => {
 		category.title = i18next.t(category.id);
-		category.entries = category.entries.map(v => {
-			return { ...v, title: i18next.t(v.id) };
+		// array-callback-return disables, we're not using the product of the callback
+		category.entries.map(({ id }) => { // eslint-disable-line array-callback-return
+			let item = store.get(category.id + id);
+			item.title = i18next.t(id);
 		});
 	});
 });

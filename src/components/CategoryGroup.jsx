@@ -11,11 +11,12 @@ import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
 import './CategoryGroup.css';
 import BudgetEntry from './BudgetEntry';
 import store from '../dataModel/dataStore';
+import Periods from '../dataModel/periods';
 
-const CategoryGroup = ({ id, title, entries, positive }) => {
+const CategoryGroup = ({ id, title, entries, positive, appPeriod }) => {
 	const calcTotal = () => {
-		let result = entries.map(({amount}) => amount);
-		result = result.reduce((total, val) => total + val);
+		let result = entries.map(({ amount, period }) => amount * period); // entries as annuals
+		result = result.reduce((total, val) => total + val );
 		return result;
 	};
 
@@ -40,7 +41,7 @@ const CategoryGroup = ({ id, title, entries, positive }) => {
 		<ExpansionPanel>
 			<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 				<Typography className="category-group-title">{title}</Typography>
-				<Typography className="category-group-accumulated">{(positive ? '' : '-' )+ t('currencySymbol')}{Math.round((total))}</Typography>
+				<Typography className="category-group-accumulated">{(positive ? '' : '-' )+ t('currencySymbol')}{Math.round((total / appPeriod))}</Typography>
 			</ExpansionPanelSummary>
 
 			<ExpansionPanelDetails>
@@ -55,6 +56,7 @@ CategoryGroup.propTypes = {
 	title: PropTypes.string.isRequired,
 	entries: PropTypes.arrayOf(PropTypes.object).isRequired,
 	positive: PropTypes.bool,
+	appPeriod: PropTypes.oneOf(Object.values(Periods)).isRequired,
 };
 
 CategoryGroup.defaultProps = {

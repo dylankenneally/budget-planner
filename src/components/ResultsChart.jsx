@@ -4,6 +4,7 @@ import Chart from 'chart.js';
 import store from '../dataModel/dataStore';
 import { withTranslation } from 'react-i18next';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+import Periods from '../dataModel/periods';
 
 const colours = [
 	'rgba(255, 99, 132, 0.7)',
@@ -65,10 +66,10 @@ class ResultsChart extends React.Component {
 		const incomings = this.state.budget.filter(entry => entry.positive === true);
 		const outgoings = this.state.budget.filter(entry => entry.positive !== true);
 
-		let totalIncome = incomings.map(({ entries }) => entries.reduce((sum, { amount }) => sum + amount, 0));
+		let totalIncome = incomings.map(({ entries }) => entries.reduce((sum, { amount, period }) => sum + (amount * period), 0));
 		totalIncome = totalIncome.reduce((a, b) => a + b);
 
-		const categoryTotals = outgoings.map(({ entries }) => entries.reduce((sum, { amount }) => sum + amount, 0));
+		const categoryTotals = outgoings.map(({ entries }) => entries.reduce((sum, { amount, period }) => sum + (amount * period), 0));
 		const totalOutgoing = categoryTotals.reduce((a, b) => a + b);
 
 		this.chart.data.datasets = [{
@@ -79,9 +80,11 @@ class ResultsChart extends React.Component {
 
 		this.chart.options.legend.display = isWidthUp('sm', this.props.width);
 
-		const balance = totalIncome - totalOutgoing;
+		let balance = totalIncome - totalOutgoing;
+		balance /= this.props.period;
+		balance = Math.floor(balance);
 		if (balance < 0) {
-			this.chart.options.title.text = this.props.t('negativeBalance', { balance: balance });
+			this.chart.options.title.text = this.props.t('negativeBalance', { balance });
 		} else {
 			this.chart.options.title.text = this.props.t('positiveBalance', { balance });
 		}
@@ -98,6 +101,7 @@ ResultsChart.propTypes = {
 	budget: PropTypes.array.isRequired,
 	t: PropTypes.func.isRequired, // supplied via withTranslation below
 	width: PropTypes.string.isRequired, /// supplied with withWidth below, as a breakpoint string
+	period: PropTypes.oneOf(Object.values(Periods)).isRequired,
 };
 
 export default withTranslation()(withWidth()(ResultsChart));
