@@ -1,7 +1,4 @@
 {
-  "dev": {
-    "todo": "Under development"
-  },
   "period": {
     "daily": "Daily",
     "weekly": "Weekly",
@@ -102,5 +99,7 @@
   "Other school needs": "Other school needs",
   "Child support payment": "Child support payment",
   "summary": "Your budget summary",
-  "reset-header": "Would you like to start again?"
+  "reset-header": "Would you like to start again?",
+  "app-title": "Work out where your money is going with this budget planner tool",
+  "view-as": "View your budget:"
 }
