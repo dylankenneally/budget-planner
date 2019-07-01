@@ -2,6 +2,7 @@
   "name": "budget-planner",
   "version": "0.1.0",
   "description": "Budget Planner",
+  "homepage": "https://dylankenneally.github.io/budget-planner",
   "bugs": {
     "url": "https://github.com/dylankenneally/budget-planner/issues"
   },
@@ -30,7 +31,8 @@
     "eject": "react-scripts eject",
     "lint": "npx eslint --ext .jsx,.js .",
     "i18n:generate": "npx i18next-scanner --config build-scripts/i18next-scanner.config.js",
-    "l10n:validate": "node build-scripts/check-l10n.js"
+    "l10n:validate": "node build-scripts/check-l10n.js",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -46,6 +48,7 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
+    "gh-pages": "^2.0.1",
     "i18next-scanner": "^2.10.2"
   }
 }

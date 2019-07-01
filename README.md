@@ -1,11 +1,8 @@
 # Budget Planner app
 [![Build Status](https://travis-ci.org/dylankenneally/budget-planner.svg?branch=master)](https://travis-ci.org/dylankenneally/budget-planner)
 
-- The goal of this project is to write and deploy a basic personal budget web app, loosely based on [ASIC's Budget Planner](https://www.moneysmart.gov.au/tools-and-resources/calculators-and-apps/budget-planner).
-- The motivation for this project is to further explore a variety of different web technologies and how to piece them together, to help me learn new tech as well as deepen my knowledge of tech that I'm already using
-- More information
-  - [Projects/sprints](https://github.com/dylankenneally/budget-planner/projects)
-  - [Backlog/dump of what needs doing](./docs/backlog.md)
+- A budget planner app, loosely based on [ASIC's Budget Planner](https://www.moneysmart.gov.au/tools-and-resources/calculators-and-apps/budget-planner).
+- Built for fun to give me a chance to experiment with a few bits of tech I might not get to explore in my day job too thoroughly.
 
 ## Prerequisites
 - [Node.js](https://nodejs.org/en/), version 10 or above is required.
@@ -22,3 +19,12 @@ npm start # will auto open your browser with the app in it
 # to perform a production build
 npm run build # build will be produced in './build' directory, serve via any HTTP server
 ```
+
+## Tech stack in use/played with:
+- React.js for the render engine
+- Material UI for the UI framework/widget ste
+- i18next for internationalisation and localisation
+- chart.js for summary data display
+- gh-pages for deployment
+- travis CI for automated builds
+- custom eslint setup to aid development
