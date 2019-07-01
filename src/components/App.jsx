@@ -27,7 +27,7 @@ const Header = () => {
 	return (
 		<>
 			<Hidden smDown>
-				<Typography variant="h6" gutterBottom>{t('app-title')}</Typography>
+				<Typography variant="subtitle1" gutterBottom>{t('app-title')}</Typography>
 			</Hidden>
 			<div className="header-text">
 				<Typography>{
