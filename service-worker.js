@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/budget-planner/precache-manifest.afb244655b7fadfae5c8e03742ca6dbc.js"
+  "/budget-planner/precache-manifest.670d90bc49528c25a70a4f2bd2110b8b.js"
 );
 
 self.addEventListener('message', (event) => {
