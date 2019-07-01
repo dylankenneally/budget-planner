@@ -6,7 +6,7 @@ import {
 	ExpansionPanel,
 	ExpansionPanelDetails,
 	ExpansionPanelSummary,
-	Grid,
+	Hidden,
 	Toolbar,
 	Typography,
 	useScrollTrigger,
@@ -25,19 +25,17 @@ const Header = () => {
 	store.subscribe('summary-period', (p) => setPeriod(p));
 
 	return (
-		<Grid container spacing={4}>
-			<Grid item xs={8}>
-				<Typography variant="h6" gutterBottom>
-					{t('app-title')}
-				</Typography>
-			</Grid>
-			<Grid item xs={4}>
-				<div className="header-text">
-					{t('view-as')}&nbsp;
+		<>
+			<Hidden smDown>
+				<Typography variant="h6" gutterBottom>{t('app-title')}</Typography>
+			</Hidden>
+			<div className="header-text">
+				<Typography>{
+					t('view-as')}&nbsp;
 					<PeriodSelector period={period} onChange={newPeriod => store.set('summary-period', newPeriod)} />
-				</div>
-			</Grid>
-		</Grid>
+				</Typography>
+			</div>
+		</>
 	);
 };
 
@@ -56,7 +54,6 @@ function ElevationScroll(props) {
 ElevationScroll.propTypes = {
 	children: PropTypes.node.isRequired
 };
-
 
 // eslint-disable-next-line
 const App = (props) => {
